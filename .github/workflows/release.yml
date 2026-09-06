@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Move major alias & publish release
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Move major alias tag
+        run: |
+          tag="${{ github.ref_name }}"
+          major="${tag%%.*}"
+          echo "Pushed tag: $tag"
+          echo "Major alias: $major"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git tag -f "$major" "$tag"
+          git push -f origin "refs/tags/$major"
+
+      - name: Create or update GitHub Release
+        run: |
+          tag="${{ github.ref_name }}"
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists; updating notes."
+            gh release edit "$tag" --verify-tag
+          else
+            echo "Creating release $tag."
+            gh release create "$tag" --title "$tag" --generate-notes
+          fi

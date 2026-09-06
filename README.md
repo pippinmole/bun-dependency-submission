@@ -171,6 +171,12 @@ npm run all         # everything above
 The action runs from the committed **`dist/`** bundle, so rebuild and commit
 `dist/` whenever you change `src/`. CI fails if `dist/` is out of date.
 
+### Releasing
+
+Releases are cut deliberately by pushing a `vX.Y.Z` tag; a major alias (`vX`)
+tracks the latest release for consumers. See [RELEASING.md](./RELEASING.md) for
+the full process.
+
 ## License
 
 [MIT](./LICENSE)
