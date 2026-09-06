@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# TypeScript build output (dist/ IS committed — the action runs from it)
+lib/
+*.tsbuildinfo
+
+# Dry-run output
+bun-dependency-snapshot.json
+
+# Logs / misc
+*.log
+npm-debug.log*
+.DS_Store
+
+# Editor
+.idea/
+.vscode/

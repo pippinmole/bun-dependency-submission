@@ -1,0 +1,52 @@
+name: 'Bun Dependency Submission'
+description: >-
+  Parse a Bun lockfile (bun.lock) and submit the full resolved dependency tree
+  to the GitHub Dependency Submission API, enabling Dependabot alerts on
+  transitive dependencies.
+author: 'pippinmole'
+
+branding:
+  icon: 'shield'
+  color: 'gray-dark'
+
+inputs:
+  working-directory:
+    description: 'Directory containing the lockfile, relative to the repository root.'
+    required: false
+    default: '.'
+  lockfile:
+    description: 'Lockfile filename. Use bun.lock (text) or bun.lockb (legacy binary; requires bun on PATH).'
+    required: false
+    default: 'bun.lock'
+  dry-run:
+    description: >-
+      When true, write the snapshot to a file (see output-file) instead of
+      submitting it to GitHub. Useful for local verification.
+    required: false
+    default: 'false'
+  output-file:
+    description: >-
+      Path to write the snapshot JSON to when dry-run is true.
+      Defaults to bun-dependency-snapshot.json in the current directory.
+    required: false
+    default: ''
+  token:
+    description: >-
+      Token used to submit the snapshot. Needs `contents: write` permission.
+      Defaults to the automatic GITHUB_TOKEN.
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  resolved-count:
+    description: 'Number of registry packages resolved and included in the snapshot.'
+  skipped-count:
+    description: 'Number of non-registry entries skipped (workspace:, link:, file:, git/github:, http(s):).'
+  snapshot-file:
+    description: 'Path the snapshot was written to (dry-run only).'
+  snapshot-json:
+    description: 'The generated snapshot as a JSON string.'
+
+runs:
+  using: 'node24'
+  main: 'dist/index.js'

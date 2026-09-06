@@ -1,0 +1,19 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "simple-app",
+      "dependencies": {
+        "is-odd": "^3.0.1",
+      },
+      "devDependencies": {
+        "left-pad": "^1.3.0",
+      },
+    },
+  },
+  "packages": {
+    "is-number": ["is-number@6.0.0", "", {}, "sha512-Wu1VbP2fq6P0sJ7lC0j0qMk3n5w0m2kq4bYb7bZ9k2sT2m3jQ0aXe0N2c1cQ0aXd2C0aX=="],
+    "is-odd": ["is-odd@3.0.1", "", { "dependencies": { "is-number": "^6.0.0" } }, "sha512-CQpnWPrDwmP1+SMHXZhtLtJv90yiyVfluGsX5iNCVkrhQtU3TQHsUWPG9wkdk9Lgd5yNQ0aXd2C0aX=="],
+    "left-pad": ["left-pad@1.3.0", "", {}, "sha512-XI5MPzVNApjAyhQzphX8BkmKsKUxD4LdyK24iZeQGinBN9yTQT3bFlCBy/aVx2HrNcqQG4pS3fdU8ktkXpKKrA=="],
+  },
+}

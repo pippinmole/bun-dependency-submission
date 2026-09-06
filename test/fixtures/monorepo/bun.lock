@@ -1,0 +1,31 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "monorepo-root",
+      "devDependencies": {
+        "typescript": "^5.7.2",
+      },
+    },
+    "packages/app": {
+      "name": "@myorg/app",
+      "dependencies": {
+        "@myorg/utils": "workspace:*",
+        "lodash": "^4.17.21",
+      },
+    },
+    "packages/utils": {
+      "name": "@myorg/utils",
+      "dependencies": {
+        "ms": "^2.1.3",
+      },
+    },
+  },
+  "packages": {
+    "@myorg/app": ["@myorg/app@workspace:packages/app", { "dependencies": { "@myorg/utils": "workspace:*", "lodash": "^4.17.21" } }],
+    "@myorg/utils": ["@myorg/utils@workspace:packages/utils", { "dependencies": { "ms": "^2.1.3" } }],
+    "lodash": ["lodash@4.17.21", "", {}, "sha512-v2kDEE57letecT2kSWK4jqAyTZz4kfuLewAr8f1jY0wg1VwuY7bLc0BQw2VNMKf0hE3xdZ2C0aXd2C0aX=="],
+    "ms": ["ms@2.1.3", "", {}, "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XVP6nsU8dj4wm/w9tR0aXd2C0aX=="],
+    "typescript": ["typescript@5.7.2", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-i5t66RHxDvVN40HfDd1PdrT_ORO12nZWr9jsFdrgm5jK4A0aXd2C0aXd2C0aXd2C0aX=="],
+  },
+}

@@ -1,0 +1,52 @@
+{
+  "name": "bun-dependency-submission",
+  "version": "1.0.0",
+  "description": "GitHub Action that submits a Bun project's resolved dependency tree (from bun.lock) to GitHub's Dependency Submission API, enabling Dependabot alerts on transitive dependencies.",
+  "keywords": [
+    "bun",
+    "bun.lock",
+    "dependabot",
+    "dependency-graph",
+    "dependency-submission",
+    "github-actions",
+    "github-advanced-security",
+    "sbom"
+  ],
+  "homepage": "https://github.com/pippinmole/bun-dependency-submission#readme",
+  "bugs": {
+    "url": "https://github.com/pippinmole/bun-dependency-submission/issues"
+  },
+  "license": "MIT",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pippinmole/bun-dependency-submission.git"
+  },
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.ts -o dist --source-map --license licenses.txt",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/**/*.test.ts",
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "all": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@github/dependency-submission-toolkit": "^2.0.5",
+    "jsonc-parser": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@vercel/ncc": "^0.38.3",
+    "oxfmt": "^0.66.0",
+    "oxlint": "^1.81.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

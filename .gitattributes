@@ -1,0 +1,5 @@
+# Normalize line endings to LF (matches oxfmt endOfLine: lf)
+* text=auto eol=lf
+
+# Bundled output — collapse in diffs and exclude from language stats
+dist/** linguist-generated=true

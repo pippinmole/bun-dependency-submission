@@ -1,0 +1,25 @@
+{
+  "lockfileVersion": 1,
+  "patchedDependencies": {
+    "is-even@1.0.0": "patches/is-even@1.0.0.patch",
+  },
+  "workspaces": {
+    "": {
+      "name": "protocols-app",
+      "dependencies": {
+        "my-lodash": "npm:lodash@^4.17.21",
+        "is-even": "^1.0.0",
+        "local-lib": "file:./vendor/local-lib",
+        "forked-dep": "github:someone/forked-dep",
+      },
+    },
+  },
+  "packages": {
+    "my-lodash": ["my-lodash@npm:lodash@4.17.21", "", {}, "sha512-v2kDEE57letecT2kSWK4jqAyTZz4kfuLewAr8f1jY0wg1VwuY7bLc0BQw2VNMKf0hE3xdZ2C0aXd2C0aX=="],
+    "is-even": ["is-even@1.0.0", "", { "dependencies": { "is-odd": "^0.1.2" } }, "sha512-abcEVEN0123456789AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCdEfGhIjKl=="],
+    "is-odd": ["is-odd@0.1.2", "", { "dependencies": { "is-number": "^3.0.0" } }, "sha512-abcODD00123456789AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCdEfGhIjKlm=="],
+    "is-number": ["is-number@3.0.0", "", {}, "sha512-abcNUM000123456789AbCdEfGhIjKlMnOpQrStUvWxYz0123456789AbCdEfGhIjKn=="],
+    "local-lib": ["local-lib@file:vendor/local-lib", { "dependencies": {} }],
+    "forked-dep": ["forked-dep@github:someone/forked-dep#a1b2c3d4", { "dependencies": {} }],
+  },
+}
